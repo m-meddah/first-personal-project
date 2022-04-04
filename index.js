@@ -1,29 +1,29 @@
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
-const express = require("express");
+const express = require('express');
+
 const app = express();
 
-app.set("views", "app/views");
-app.set("view engine", "ejs");
+app.set('views', 'app/views');
+app.set('view engine', 'ejs');
 
-app.use(express.static("public"));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-const session = require("express-session");
-app.use(
-  session({
-    saveUninitialized: true,
-    resave: true,
-    secret: "lqhmkmnvfjklnwmsjvmsld",
-  })
-);
+app.use(express.urlencoded({extended: true}));
 
-const router = require("app/router");
+const session = require('express-session');
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'jbjqskhljjqvfmvqsbn<m'
+}));
+
+const router = require('./app/router');
 app.use(router);
 
-app.listen(PORT, () => {
-  console.log(`Listening on : http://localhost:${PORT}`);
+app.listen( PORT,  () => {
+  console.log(`Listening on http://localhost:${PORT}`);
 });
